@@ -1,7 +1,5 @@
-angular.module("MyApp", [], function ($rootScopeProvider) {
-    $rootScopeProvider.digestTtl(Infinity); // look that up
-})
-    .controller('MyAppCtrl', function ($scope, $http) {
+angular.module("MyApp", [])
+    .controller('MyAppCtrl', ['$scope', '$http', function ($scope, $http) {
         var urlRegEx = /^https?:\/\//;
         $scope.type = function (thing) {
             switch (typeof thing) {
@@ -26,7 +24,7 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
 
         // makes user input something is string fields
         $scope.checkStr = function (obj) {
-            if(obj.length == 0) {
+            if (obj.length == 0) {
                 alert("Please enter a valid string");
                 return false;
             } else {
@@ -35,13 +33,13 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
         };
 
         // decides which function to call to assign data
-        $scope.assignData = function (conditional) {
-            if(angular.isString(conditional)){
-                $scope.assignNewJson(conditional);
+        $scope.assignData = function (input) {
+            if (angular.isString(input)) {
+                $scope.assignNewJson(input);
 
-            } else if (angular.isNumber(conditional)){
+            } else if (angular.isNumber(input)) {
                 $scope.assignSampleJson();
-            }  else {
+            } else {
                 $scope.assignNullData();
             }
         };
@@ -56,7 +54,7 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
         // Provides User sample Json
         $scope.assignSampleJson = function () {
             $http.get("../assets/data.json").then(function (response) {
-                $scope.jsonText = angular.toJson(response.data, [pretty=true]);
+                $scope.jsonText = angular.toJson(response.data, [pretty = true]);
             });
         };
 
@@ -69,17 +67,17 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
 
         // Converts jsonText to newJson based on Tree View edits
         $scope.assignNewJsonText = function (text) {
-            $scope.jsonText = angular.toJson(text, [pretty=true]);
+            $scope.jsonText = angular.toJson(text, [pretty = true]);
             console.log(text);
         };
 
         // Converts string value from select box to equiv bool value
         $scope.toBoolean = function (value) {
-            if(value == "true"){
+            if (value == "true") {
                 return true;
             } else {
                 return false;
             }
         }
 
-    });
+    }]);

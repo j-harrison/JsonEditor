@@ -1,5 +1,7 @@
-angular.module("MyApp", [])
-    .controller('MyAppCtrl', ['$scope', '$http', function ($scope, $http) {
+angular.module("MyApp", [], function ($rootScopeProvider) {
+    $rootScopeProvider.digestTtl(Infinity); // look that up
+})
+    .controller('MyAppCtrl', function ($scope, $http) {
         var urlRegEx = /^https?:\/\//;
         $scope.type = function (thing) {
             switch (typeof thing) {
@@ -24,7 +26,7 @@ angular.module("MyApp", [])
 
         // makes user input something is string fields
         $scope.checkStr = function (obj) {
-            if (obj.length == 0) {
+            if(obj.length == 0) {
                 alert("Please enter a valid string");
                 return false;
             } else {
@@ -33,13 +35,13 @@ angular.module("MyApp", [])
         };
 
         // decides which function to call to assign data
-        $scope.assignData = function (input) {
-            if (angular.isString(input)) {
-                $scope.assignNewJson(input);
+        $scope.assignData = function (conditional) {
+            if(angular.isString(conditional)){
+                $scope.assignNewJson(conditional);
 
-            } else if (angular.isNumber(input)) {
+            } else if (angular.isNumber(conditional)){
                 $scope.assignSampleJson();
-            } else {
+            }  else {
                 $scope.assignNullData();
             }
         };
@@ -47,14 +49,18 @@ angular.module("MyApp", [])
 
         // Assigns User JSON input
         $scope.assignNewJson = function (text) {
-            $scope.value = JSON.parse(text);
+            $scope.assignNullData();
+            $scope.hide =! $scope.hide;
+
+            var obj = angular.copy(text);
+            $scope.value = JSON.parse(obj);
             $scope.present = true;
         };
 
         // Provides User sample Json
         $scope.assignSampleJson = function () {
             $http.get("../assets/data.json").then(function (response) {
-                $scope.jsonText = angular.toJson(response.data, [pretty = true]);
+                $scope.jsonText = angular.toJson(response.data, [pretty=true]);
             });
         };
 
@@ -63,21 +69,24 @@ angular.module("MyApp", [])
             $scope.jsonText = "";
             $scope.value = "";
             $scope.present = false;
+
         };
 
         // Converts jsonText to newJson based on Tree View edits
         $scope.assignNewJsonText = function (text) {
-            $scope.jsonText = angular.toJson(text, [pretty = true]);
-            console.log(text);
+            $scope.assignNullData();
+            var obj = angular.copy(text);
+            $scope.jsonText = angular.toJson(obj, [pretty=true]);
+            $scope.hide =! $scope.hide;
         };
 
         // Converts string value from select box to equiv bool value
         $scope.toBoolean = function (value) {
-            if (value == "true") {
+            if(value == "true"){
                 return true;
             } else {
                 return false;
             }
         }
 
-    }]);
+    });

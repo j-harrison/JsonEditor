@@ -7,18 +7,7 @@
         {
             "columns": [
                 {
-                    "menuItemGroups": [
-                        {
-                            "label": "New ...",
-                            "menuItems": [
-                                {
-                                    "action": "create",
-                                    "idpName": "c_idp.c_soln_development_folder",
-                                    "label": "Solution (Folder)"
-                                }
-                            ]
-                        }
-                    ],
+                    "menuItemGroups": "yes",
                     "width": 250
                 }
             ]

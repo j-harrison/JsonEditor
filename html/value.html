@@ -1,0 +1,87 @@
+<span ng-switch="type(value)">
+
+    <!--String-->
+    <span ng-show="collapsed" ng-switch-when="string">
+
+        <span ng-show="editing">
+            <input type="text" ng-model="groupValue[key]"/>
+            <button class="btn btn-primary btn-xs" ng-click="checkStr(groupValue[key])==true?(editing = ! editing):'editing=editing'">DONE</button>
+
+        </span>
+
+        <span ng-show="!editing" ng-dblclick="editing=!editing">
+            {{groupValue[key]}}
+        </span>
+    </span>
+
+    <!--URL-->
+    <span ng-show="collapsed" ng-switch-when="url">
+        <a href="value">{{value}}</a>
+    </span>
+
+    <!--Boolean-->
+    <span ng-show="collapsed" ng-switch-when="boolean">
+        <span ng-show="editing">
+            <select ng-model='value'>
+                <option value="true">true</option>
+                <option value="false">false</option>
+
+            </select>
+            <button class="btn btn-primary btn-xs" ng-click="editing=!editing; groupValue[key] = toBoolean(value)">DONE</button>
+
+        </span>
+
+        <span ng-show="!editing" ng-dblclick="editing=!editing">
+            {{value}}
+        </span>
+    </span>
+
+    <!--Number-->
+    <span ng-show="collapsed" ng-switch-when="number">
+
+        <span ng-show="editing">
+            <input type="number" ng-model="groupValue[key]" min="0"/>
+            <button class="btn btn-primary btn-xs" ng-click="editing = ! editing">DONE</button>
+        </span>
+
+        <span ng-show="!editing" ng-dblclick="editing=!editing">
+                {{groupValue[key]}}
+        </span>
+
+    </span>
+
+    <!--Array-->
+    <span ng-switch-when="array">
+        &nbsp;[&nbsp;
+
+        <div ng-repeat="(key, value) in value" class="box" ng-init="groupValue = $parent.value">
+            <span ng-include="'value.html'"></span>
+        </div>
+
+        &nbsp;]&nbsp;
+    </span>
+
+    <!--Object-->
+    <div ng-switch-when="obj">
+        &nbsp;{&nbsp;
+
+        <div ng-repeat="(key, value) in value" class="box" ng-init="groupValue = $parent.value">
+            <img ng-click="(collapsed=!collapsed)"
+                 ng-src="{{collapsed == true && '../assets/images/small-minus.gif' || '../assets/images/small-plus.gif'}}"/>
+            <a href="">{{key}}:</a><span ng-show="collapsed" ng-include="'value.html'"></span>
+        </div>
+
+        &nbsp;}&nbsp;
+
+    </div>
+
+    <!--NULL-->
+    <!--right now you can only get here from number that is cleared out or an undefined value-->
+    <div ng-switch-when="null">
+        <span>
+            <input type="number" ng-model="groupValue[key]"/>
+        </span>
+    </div>
+
+</span>
+

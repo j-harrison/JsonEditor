@@ -16,7 +16,7 @@ button.btn-warning {
 }
 
 table {
-    width: 90%;
+    width: 100%;
 }
 
 div div div {
@@ -42,9 +42,9 @@ ul {
 }
 
 textarea {
-    width: 1050px;
+    width: 1090px;
     height: 300px;
-    max-width: 1200px;
+    max-width: 1090px;
 }
 
 h2 {

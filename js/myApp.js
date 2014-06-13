@@ -36,14 +36,12 @@ angular.module("MyApp", [])
         $scope.assignData = function (input) {
             if (angular.isString(input)) {
                 $scope.assignNewJson(input);
-
             } else if (angular.isNumber(input)) {
                 $scope.assignSampleJson();
             } else {
                 $scope.assignNullData();
             }
         };
-
 
         // Assigns User JSON input
         $scope.assignNewJson = function (text) {

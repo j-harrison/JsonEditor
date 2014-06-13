@@ -5,7 +5,9 @@
 
         <span ng-show="editing">
             <input type="text" ng-model="groupValue[key]"/>
-            <button class="btn btn-primary btn-xs" ng-click="checkStr(groupValue[key])==true?(editing = ! editing):'editing=editing'">DONE</button>
+            <button class="btn btn-primary btn-xs"
+                    ng-click="checkStr(groupValue[key])==true?(editing = ! editing):'editing=editing'">DONE
+            </button>
 
         </span>
 
@@ -27,7 +29,9 @@
                 <option value="false">false</option>
 
             </select>
-            <button class="btn btn-primary btn-xs" ng-click="editing=!editing; groupValue[key] = toBoolean(value)">DONE</button>
+            <button class="btn btn-primary btn-xs" ng-click="editing=!editing; groupValue[key] = toBoolean(value)">
+                DONE
+            </button>
 
         </span>
 

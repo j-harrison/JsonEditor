@@ -58,8 +58,8 @@
     <span ng-switch-when="array">
         &nbsp;[&nbsp;
 
-        <div ng-repeat="(key, value) in value" class="box" ng-init="groupValue = $parent.value">
-            <span ng-include="'value.html'"></span>
+        <div ng-repeat="(key, value) in value" ng-init="groupValue = $parent.value">
+            <span><treeview value="value.child"></treeview></span>
         </div>
 
         &nbsp;]&nbsp;
@@ -69,10 +69,10 @@
     <div ng-switch-when="obj">
         &nbsp;{&nbsp;
 
-        <div ng-repeat="(key, value) in value" class="box" ng-init="groupValue = $parent.value">
+        <div ng-repeat="(key, value) in value" ng-init="groupValue = $parent.value">
             <img ng-click="(collapsed=!collapsed)"
                  ng-src="{{collapsed == true && '../assets/images/small-minus.gif' || '../assets/images/small-plus.gif'}}"/>
-            <a href="">{{key}}:</a><span ng-show="collapsed" ng-include="'value.html'"></span>
+            <a href="">{{key}}:</a><span ng-show="collapsed"><treeview value="value.child"></treeview></span>
         </div>
 
         &nbsp;}&nbsp;

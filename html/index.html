@@ -8,7 +8,7 @@
     </head>
 
     <body ng-app="MyApp">
-        <div ng-controller="MyAppCtrl" class="box">
+        <div ng-controller="MyAppCtrl">
             <br/>
             <button class="btn btn-warning" ng-click="assignData(1) ; hide=false">Sample JSON</button>
 
@@ -47,8 +47,9 @@
 
             <button ng-show="present" class="btn btn-info" ng-click="assignNewJsonText(value)">Create New JSON</button>
 
-            <div ng-include="'value.html'" style="display: block;">
+            <div style="display: block;">
 
+                <treeview value="value"></treeview>
 
             </div>
 

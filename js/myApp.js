@@ -26,7 +26,7 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
 
         // makes user input something is string fields
         $scope.checkStr = function (obj) {
-            if(obj.length == 0) {
+            if (obj.length == 0) {
                 alert("Please enter a valid string");
                 return false;
             } else {
@@ -36,12 +36,12 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
 
         // decides which function to call to assign data
         $scope.assignData = function (conditional) {
-            if(angular.isString(conditional)){
+            if (angular.isString(conditional)) {
                 $scope.assignNewJson(conditional);
 
-            } else if (angular.isNumber(conditional)){
+            } else if (angular.isNumber(conditional)) {
                 $scope.assignSampleJson();
-            }  else {
+            } else {
                 $scope.assignNullData();
             }
         };
@@ -50,7 +50,7 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
         // Assigns User JSON input
         $scope.assignNewJson = function (text) {
             $scope.assignNullData();
-            $scope.hide =! $scope.hide;
+            $scope.hide = !$scope.hide;
 
             var obj = angular.copy(text);
             $scope.value = JSON.parse(obj);
@@ -60,7 +60,7 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
         // Provides User sample Json
         $scope.assignSampleJson = function () {
             $http.get("../assets/data.json").then(function (response) {
-                $scope.jsonText = angular.toJson(response.data, [pretty=true]);
+                $scope.jsonText = angular.toJson(response.data, [pretty = true]);
             });
         };
 
@@ -76,17 +76,25 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
         $scope.assignNewJsonText = function (text) {
             $scope.assignNullData();
             var obj = angular.copy(text);
-            $scope.jsonText = angular.toJson(obj, [pretty=true]);
-            $scope.hide =! $scope.hide;
+            $scope.jsonText = angular.toJson(obj, [pretty = true]);
+            $scope.hide = !$scope.hide;
         };
 
         // Converts string value from select box to equiv bool value
         $scope.toBoolean = function (value) {
-            if(value == "true"){
+            if (value == "true") {
                 return true;
             } else {
                 return false;
             }
         }
 
+    }).directive("treeView", function () {
+        return{
+            restrict: "EA",
+            scope: true,
+            transclude: true,
+            //templateUrl: "value.html"
+            template: "<span ng-include=\"\'value.html\'\"></span>"
+        }
     });

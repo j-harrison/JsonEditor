@@ -58,7 +58,7 @@
         &nbsp;[&nbsp;
 
         <div ng-repeat="(key, value) in value" class="box" ng-init="groupValue = $parent.value">
-            <span ng-include="'value.html'"></span>
+            <span tree-view></span>
         </div>
 
         &nbsp;]&nbsp;
@@ -71,7 +71,7 @@
         <div ng-repeat="(key, value) in value" class="box" ng-init="groupValue = $parent.value">
             <img ng-click="(collapsed=!collapsed)"
                  ng-src="{{collapsed == true && '../assets/images/small-minus.gif' || '../assets/images/small-plus.gif'}}"/>
-            <a href="">{{key}}:</a><span ng-show="collapsed" ng-include="'value.html'"></span>
+            <a href="">{{key}}:</a><span ng-show="collapsed" tree-view></span>
         </div>
 
         &nbsp;}&nbsp;

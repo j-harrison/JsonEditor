@@ -13,12 +13,6 @@
             ]
         }
     ],
-    "startMenu": {
-        "image": "/intellidox/client/icons/dashboard/icon_actions_small.png",
-        "label": "Solution Development",
-        "style": "padding-left: 10px; background-color: #5d5d5d; color: white; font: normal 1.101em tahoma, arial, verdana, sans-serif;",
-        "text": "Solution Development"
-    },
     "titleCenter": {
         "label": "Solution Development",
         "text": "Solution Development"

@@ -1,6 +1,27 @@
 angular.module("MyApp", [], function ($rootScopeProvider) {
     $rootScopeProvider.digestTtl(Infinity); // look that up
 })
+    .directive('treeview', function ($compile)
+    {
+        return {
+            restrict: "E",
+            templateUrl: 'value.html',
+            compile: function(tElement) {
+                var childData = tElement.contents().remove();
+                var compiledContents;
+                return function(scope, iElement) {
+                    if(!compiledContents) {
+                        compiledContents = $compile(childData);
+                    }
+                    compiledContents(scope, function(clone) {
+                        iElement.append(clone);
+                    });
+                };
+
+            }
+        }
+    })
+
     .controller('MyAppCtrl', function ($scope, $http) {
         var urlRegEx = /^https?:\/\//;
         $scope.type = function (thing) {
@@ -72,7 +93,7 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
 
         };
 
-        // Converts jsonText to newJson based on Tree View edits
+        // Converts tree to newJson based on Tree View edits
         $scope.assignNewJsonText = function (text) {
             $scope.assignNullData();
             var obj = angular.copy(text);
@@ -89,12 +110,4 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
             }
         }
 
-    }).directive("treeView", function () {
-        return{
-            restrict: "EA",
-            scope: true,
-            transclude: true,
-            //templateUrl: "value.html"
-            template: "<span ng-include=\"\'value.html\'\"></span>"
-        }
     });

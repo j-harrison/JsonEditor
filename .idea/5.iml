@@ -4,6 +4,11 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="angular" level="application" />
+    <orderEntry type="library" name="dojo" level="application" />
+    <orderEntry type="library" name="JSVSchema" level="project" />
+    <orderEntry type="library" name="chai-json-schema" level="project" />
+    <orderEntry type="library" name="tv4" level="project" />
   </component>
 </module>
 

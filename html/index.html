@@ -6,37 +6,53 @@
     <link rel="stylesheet" type="text/css" href="../assets/bootstrap/bootstrap.min.css"/>
     <link href="../assets/style.css" rel="stylesheet" type="text/css">
 </head>
+
 <body ng-app="MyApp">
-<div ng-controller="MyAppCtrl" class="box">
+<div ng-controller="MyAppCtrl">
     <br/>
     <button class="btn btn-warning" ng-click="assignData(1) ; hide=false">Sample JSON</button>
+
     <table>
+
         <img style="margin-bottom: 15px;" ng-click="(hide=!hide)"
              ng-src="{{hide == true && '../assets/images/expand.png' || '../assets/images/collapse.png'}}"/>
 
         <h2 ng-show="!hide">Enter JSON to be Viewed</h2>
 
         <h2 ng-show="hide">Expand Text Area</h2>
+
+
         <tr ng-show="!hide">
             <td>
-                <textarea placeholder="Insert JSON here." spellcheck="false" ng-model="jsonText"></textarea>
+                <textarea spellcheck="false" ng-model="jsonText"></textarea>
             </td>
         </tr>
         <tr>
+
         </tr>
         <tr>
             <td ng-hide="hide">
                 <br/>
                 <button class="btn btn-default btn" ng-click="assignData(jsonText)">Digest JSON</button>
+
                 <button class="btn btn-default btn" ng-click="assignData(null)">Clear</button>
+
             </td>
         </tr>
     </table>
+
+
     <div style="border-bottom: solid 1px;"></div>
     <br/>
+
     <button ng-show="present" class="btn btn-info" ng-click="assignNewJsonText(value)">Create New JSON</button>
-    <!--<div ng-include="'value.html'" style="display: block;"></div>-->
-    <div tree-view></div>
+
+    <div style="display: block;">
+
+        <treeview value="value"></treeview>
+
+    </div>
+
 </div>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<span ng-switch="type(result)">
+
+<span ng-switch-when="string">{{groupValue[key]}}</span>
+
+<span ng-switch-when="url"><a href="value">{{result}}</a></span>
+
+<span ng-switch-when="boolean">{{result}}</span>
+
+<span ng-switch-when="number">{{groupValue[key]}}</span>
+
+<div ng-switch-when="null">{{result}}</div>
+
+<span ng-switch-when="array">
+        <div ng-repeat="(key, result) in result" class="box" ng-init="groupValue = $parent.result">
+            <span ng-include="'findError.html'"></span>
+        </div>
+</span>
+
+<div ng-switch-when="obj">
+     <div ng-repeat="(key, result) in result" class="box" ng-init="groupValue = $parent.result">
+         <a class="text-danger">{{key}}:</a><span ng-include="'findError.html'"></span>
+     </div>
+ </div>
+
+</span>
+

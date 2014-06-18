@@ -1,0 +1,26 @@
+<script>
+    function readFile() {
+        try {
+            var fileReader = Document.getElementById("fileReader");
+            var displayText = Document.getElementById("displayText");
+            fileReader.addEventListener("change", function (e) {
+                var file = fileReader.files[0];
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    displayText.innerText = reader.result;
+                }
+                reader.readAsText(file);
+            });
+        }
+        catch (ERR) {
+            console.log("ERROR: " + ERR);
+        }
+        ;
+    }
+    ;
+</script>
+<div class="container" id="fileReader">
+    <input type="file"/>
+    <button type="button" onclick="readFile()">Upload</button>
+</div>
+<pre id="displayText"></pre>

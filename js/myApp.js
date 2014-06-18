@@ -80,7 +80,7 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
 
         // Provides User sample Json
         $scope.assignSampleJson = function () {
-            $http.get("../assets/data.json").then(function (response) {
+            $http.get("../Data/data.json").then(function (response) {
                 $scope.jsonText = angular.toJson(response.data, [pretty = true]);
             });
         };

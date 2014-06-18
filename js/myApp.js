@@ -19,8 +19,8 @@ angular.module("MyApp", [], function ($rootScopeProvider) {
                 };
 
             }
-        }
-    })
+    }
+})
 
     .controller('MyAppCtrl', function ($scope, $http) {
         var urlRegEx = /^https?:\/\//;

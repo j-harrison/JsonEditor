@@ -6,21 +6,6 @@
     <link rel="stylesheet" type="text/css" href="../assets/bootstrap/bootstrap.min.css"/>
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css">
     <link href="../assets/style.css" rel="stylesheet" type="text/css">
-    <!--JSV library-->
-    <script type="text/javascript" src="../jsonSchemaValidations/JSV/lib/uri/uri.js"></script>
-    <script type="text/javascript" src="../jsonSchemaValidations/JSV/lib/uri/schemes/urn.js"></script>
-    <script type="text/javascript" src="../jsonSchemaValidations/JSV/lib/jsv.js"></script>
-    <script type="text/javascript" src="../jsonSchemaValidations/JSV/lib/json-schema-draft-03.js"></script>
-    <script type="text/javascript" src="../jsonSchemaValidations/JSV/lib/json-schema-draft-02.js"></script>
-    <script type="text/javascript" src="../jsonSchemaValidations/JSV/lib/json-schema-draft-01.js"></script>
-    <!--DOJO
-     <script src="http://ajax.googleapis.com/ajax/libs/dojo/1.7.0/dojo/dojo.js"
-             type="text/javascript"></script>-->
-    <!--Chai Validation
-    <script src="../jsonSchemaValidations/node_modules/chai-json-schema/node_modules/jsonpointer.js/src/jsonpointer.js"></script>
-    <script src="../jsonSchemaValidations/node_modules/chai-json-schema/node_modules/tv4/tv4.js"></script>
-    <script src="../jsonSchemaValidations/node_modules/chai/chai.js"></script>
-    <script src="../jsonSchemaValidations/node_modules/chai-json-schema/chai-json-schema.js"></script>-->
     <!--Tv4 Validation-->
     <script src="../jsonSchemaValidations/tv4/tv4.js"></script>
     <!--Validation script-->
@@ -28,40 +13,35 @@
     <script src="../js/jsonSchema.js"></script>
     <title>JSON Validation</title>
 </head>
-<style>
-    .ng-valid{background-color: lightpink}
-</style>
 <body ng-app="MyApp">
 <h1><strong>JSON Validation</strong></h1>
-
+<h5>Using <a href="https://github.com/geraintluff/tv4">Tiny Validator</a> tool (for <a href="http://json-schema.org/latest/json-schema-core.html">v4 JSON Schema</a>).</h5>
 <div ng-controller="MyAppCtrl">
     <div ng-controller="startValidation">
-        <table>
-            <tr>
-                <td>
-                    <br/>
-                    <button class="btn btn-danger" ng-click="clearFields()">Clear</button>
-                    <button class="btn btn-primary" ng-click="setJsonValidation(); tv4Validation()">Validate</button>
-                    <button class="btn btn-warning" ng-click="assignSampleJson(); assignSchemaText()">Insert Sample
-                    </button>
-                </td>
-            </tr>
-        </table>
-        <strong><div ng-include="'schemaValidation/validationResult.html'"></div></strong>
+        <div class="btn-toolbar btn-group-sm">
+            <button class="btn btn-warning" ng-click="clearFields()">Clear Fields</button>
+            <button class="btn btn-success" ng-click="setJsonValidation(); tv4Validation()">Validate</button>
+            <button class="btn btn-success" ng-click="setSchema(); setInput()">Insert Sample</button>
+        </div>
+        <strong>
+            <div ng-include="'schemaValidation/validationResult.html'"></div>
+        </strong>
         <fieldset class="scheduler-border">
             <div class="row">
-                <div class="table">
+                <div>
                     <legend></legend>
                     <fieldset id="json_properties">
                         <label id="json_label" class="value_label">JSON Schema</label>
-                        <textarea name="InputArea" style="background-color: lightgrey" placeholder="Insert JSON schema" class="value" ng-model="schemaText"></textarea>
+                        <textarea name="jsonTextArea" placeholder="Insert JSON schema"
+                                  ng-class="getSchemaBackground()" ng-model="selectedSchemaText"></textarea>
                     </fieldset>
                 </div>
-                <div class="sixcol last">
+                <div>
                     <fieldset id="schema_properties">
                         <legend></legend>
                         <label id="schema_label" class="value_label">JSON Input</label>
-                        <textarea id="schema" style="background-color: lightgrey" class="value" placeholder="Insert JSON text" ng-model="jsonText"></textarea>
+                        <textarea id="jsonTextArea" ng-class="getInputBackground()"
+                                  placeholder="Insert JSON text" ng-model="jsonText"></textarea>
                     </fieldset>
                 </div>
             </div>

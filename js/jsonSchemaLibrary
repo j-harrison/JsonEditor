@@ -1,0 +1,5 @@
+angular.module("MyApp").controller("schemaLibrary", function($scope){
+    $scope.validateSchemaTv4 = function(){
+
+    };
+});

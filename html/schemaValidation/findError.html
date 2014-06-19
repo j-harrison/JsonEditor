@@ -12,13 +12,13 @@
 
 <span ng-switch-when="array">
         <div ng-repeat="(key, result) in result" class="box" ng-init="groupValue = $parent.result">
-            <span ng-include="'findError.html'"></span>
+            <span ng-include="'schemaValidation/findError.html'"></span>
         </div>
 </span>
 
 <div ng-switch-when="obj">
      <div ng-repeat="(key, result) in result" class="box" ng-init="groupValue = $parent.result">
-         <a class="text-danger">{{key}}:</a><span ng-include="'findError.html'"></span>
+         <a class="text-danger">{{key}}:</a><span ng-include="'schemaValidation/findError.html'"></span>
      </div>
  </div>
 

@@ -1,0 +1,167 @@
+{
+    "id": "c_idbp.soln_development",
+    "titleCenter": {
+        "label": "Solution Development",
+        "text": "Solution Development"
+    },
+    "startMenu": {
+        "image": "/intellidox/client/icons/dashboard/icon_actions_small.png",
+        "label": "Solution Development",
+        "text": "Solution Development",
+        "style": "padding-left: 10px; background-color: #5d5d5d; color: white; font: normal 1.101em tahoma, arial, verdana, sans-serif;"
+    },
+    "viewUrl": "default",
+    "initialDashboard": "false",
+    "hideDashboardMenu": "false",
+    "menuPanels": [
+        {
+            "image": "/intellidox/client/icons/dashboard/icon_create.png",
+            "label": "CREATE OR IMPORT",
+            "labelAlign": "left",
+            "columns": [
+                {
+                    "width": 250,
+                    "menuItemGroups": [
+                        {
+                            "label": "New ...",
+                            "menuItems": [
+                                {
+                                    "label": "Solution (Folder)",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_development_folder"
+                                } ,
+                                {
+                                    "label": "Onboarding Solution Information Form",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devOnboardingInfo"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "New Solution Documents",
+                            "menuItems": [
+                                {
+                                    "label": "Solution Business Case Form",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devBusCase"
+                                },
+                                {
+                                    "label": "Solution Eng. Assessment Form",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devEngAssmnt"
+                                },
+                                {
+                                    "label": "Solution Pricing Sheet",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devPricing"
+                                },
+                                {
+                                    "label": "Solution Supply Chain Form",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devSupplyChain"
+                                },
+                                {
+                                    "label": "Solution Field Support Form",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devFieldSupport"
+                                },
+                                {
+                                    "label": "Solution Service Warranty Form",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devServiceWarranty"
+                                },
+                                {
+                                    "label": "Solution Partner Sow",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devPartnerSow"
+                                } ,
+                                {
+                                    "label": "Development Agreement",
+                                    "action": "create",
+                                    "idpName": "c_idp.c_soln_devAgreement"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+
+        {
+            "image": "/intellidox/client/icons/dashboard/icon_search.png",
+            "label": "FIND",
+            "columns": [
+                {
+                    "width": "250",
+                    "menuItemGroups": [
+                        {
+                            "label": "Top Level Searches",
+                            "menuItems": [
+                                {
+                                    "label": "Customer Search",
+                                    "action": "search",
+                                    "isvpName": "c_isvp.c_soln_customer_folder_search"
+                                },
+                                {
+                                    "label": "Project Search",
+                                    "action": "search",
+                                    "isvpName": "c_isvp.c_soln_project_folder_search"
+                                },
+                                {
+                                    "label": "Partner Search",
+                                    "action": "search",
+                                    "isvpName": "c_isvp.c_soln_partner_folder_search"
+                                },
+                                {
+                                    "label": "Solution Search",
+                                    "action": "search",
+                                    "isvpName": "c_isvp.c_soln_dev_folder_search"
+                                }
+                            ]
+                        },
+                        {
+                            "label": "Document Searches",
+                            "menuItems": [
+                                {
+                                    "label": "Project Document Search",
+                                    "action": "search",
+                                    "isvpName": "c_isvp.c_soln_doc_proj_search"
+                                },
+                                {
+                                    "label": "Partner Document Search",
+                                    "action": "search",
+                                    "isvpName": "c_isvp.c_soln_doc_search_partner"
+                                },
+                                {
+                                    "label": "Solution Document Search",
+                                    "action": "search",
+                                    "isvpName": "c_isvp.c_soln_doc_search_solution"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "image": "/intellidox/client/icons/dashboard/icon_actions.png",
+            "label": "ACTIONS",
+            "columns": [
+                {
+                    "menuItemGroups": [
+                        {
+                            "label": "Go To Locations",
+                            "menuItems": [
+                                {
+                                    "label": "Customers",
+                                    "action": "goto",
+                                    "locationPath": "/Solutions/Customer Projects"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}
